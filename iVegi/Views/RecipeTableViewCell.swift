@@ -12,7 +12,7 @@ final class RecipeTableViewCell: UITableViewCell {
     private enum K {
         static let spacing: CGFloat = 10.0
     }
-
+    
     static let reuseIdentifier = "RecipeCell"
 
     private var image = UIImageView()

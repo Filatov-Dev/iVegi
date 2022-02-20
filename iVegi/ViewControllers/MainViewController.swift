@@ -9,6 +9,8 @@ import UIKit
 
 final class MainViewController: UITabBarController {
     
+    private var tester = "Test"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
