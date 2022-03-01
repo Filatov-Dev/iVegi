@@ -15,5 +15,5 @@ struct Recipe {
     let source: String
     let calories: UInt
     let lengthInMinutes: UInt
-    let steps: [String]
+    let instructions: [String]
 }

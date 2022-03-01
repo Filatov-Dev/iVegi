@@ -17,43 +17,47 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="equalCentering" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="UNO-C4-aAj">
-                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FZC-dH-GD2">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="93"/>
+                        <constraints>
+                            <constraint firstAttribute="height" secondItem="FZC-dH-GD2" secondAttribute="width" multiplier="0.62" id="iW7-G5-LZo"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKC-qQ-AK4">
+                        <rect key="frame" x="0.0" y="93" width="150" height="36.5"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="41" translatesAutoresizingMaskIntoConstraints="NO" id="n8c-Gs-YvE">
+                        <rect key="frame" x="0.0" y="129.5" width="150" height="20.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FZC-dH-GD2">
-                                <rect key="frame" x="0.0" y="0.0" width="150" height="77"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKC-qQ-AK4">
-                                <rect key="frame" x="0.0" y="82" width="150" height="17"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="100 cal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inC-gs-xFb">
+                                <rect key="frame" x="0.0" y="0.0" width="54.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="n8c-Gs-YvE">
-                                <rect key="frame" x="0.0" y="129.5" width="150" height="20.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="100 cal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="inC-gs-xFb">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF2-al-hR7">
-                                        <rect key="frame" x="75" y="0.0" width="75" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 min" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF2-al-hR7">
+                                <rect key="frame" x="95.5" y="0.0" width="54.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="UNO-C4-aAj" firstAttribute="top" secondItem="gdL-qr-wBw" secondAttribute="top" id="1tu-0u-OEG"/>
-                    <constraint firstAttribute="bottom" secondItem="UNO-C4-aAj" secondAttribute="bottom" id="5ww-uA-ejk"/>
-                    <constraint firstItem="UNO-C4-aAj" firstAttribute="leading" secondItem="gdL-qr-wBw" secondAttribute="leading" id="XfS-sg-YPt"/>
-                    <constraint firstAttribute="trailing" secondItem="UNO-C4-aAj" secondAttribute="trailing" id="ZHh-Hg-hHV"/>
+                    <constraint firstItem="n8c-Gs-YvE" firstAttribute="bottom" secondItem="gdL-qr-wBw" secondAttribute="bottomMargin" constant="8" id="9sQ-lv-qCB"/>
+                    <constraint firstItem="XKC-qQ-AK4" firstAttribute="trailing" secondItem="FZC-dH-GD2" secondAttribute="trailing" id="BmL-Gn-ybM"/>
+                    <constraint firstItem="XKC-qQ-AK4" firstAttribute="leading" secondItem="FZC-dH-GD2" secondAttribute="leading" id="N46-6Z-GeG"/>
+                    <constraint firstItem="n8c-Gs-YvE" firstAttribute="top" secondItem="XKC-qQ-AK4" secondAttribute="bottom" id="VSm-Xo-nqT"/>
+                    <constraint firstItem="n8c-Gs-YvE" firstAttribute="leading" secondItem="FZC-dH-GD2" secondAttribute="leading" id="bCa-c6-Ghe"/>
+                    <constraint firstItem="XKC-qQ-AK4" firstAttribute="top" secondItem="FZC-dH-GD2" secondAttribute="bottom" id="czy-Yo-8PW"/>
+                    <constraint firstItem="FZC-dH-GD2" firstAttribute="top" secondItem="gdL-qr-wBw" secondAttribute="top" id="fhR-CK-Min"/>
+                    <constraint firstItem="n8c-Gs-YvE" firstAttribute="trailing" secondItem="FZC-dH-GD2" secondAttribute="trailing" id="pef-eM-1EN"/>
+                    <constraint firstItem="FZC-dH-GD2" firstAttribute="leading" secondItem="gdL-qr-wBw" secondAttribute="leading" id="sJr-HU-FKc"/>
+                    <constraint firstAttribute="trailing" secondItem="FZC-dH-GD2" secondAttribute="trailing" id="xZ3-tg-fjg"/>
                 </constraints>
             </collectionViewCellContentView>
             <size key="customSize" width="119" height="92"/>

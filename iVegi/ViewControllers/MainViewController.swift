@@ -27,11 +27,12 @@ final class MainViewController: UITabBarController {
         favoriteViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         favoriteViewController.view.backgroundColor = .white
 
-        let shoppingListViewController = UITableViewController()
+        let shoppingListViewController = RecipeDetailedViewController()
+        shoppingListViewController.recipe = DataModel().getRecipe(at: 0)
         shoppingListViewController.tabBarItem = UITabBarItem(title: "Shopping list",
                                                              image: UIImage(systemName: "bag.fill"),
                                                              tag: 2)
-        shoppingListViewController.view.backgroundColor = .yellow
+        shoppingListViewController.view.backgroundColor = .white
 
         let moreViewController = UIViewController()
         moreViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
@@ -41,6 +42,9 @@ final class MainViewController: UITabBarController {
                             favoriteViewController,
                             shoppingListViewController,
                             moreViewController], animated: true)
+
+        selectedIndex = 2
+
 
         return self
     }

@@ -18,7 +18,7 @@ final class RecipeTableViewCell: UITableViewCell {
     private var image = UIImageView()
     private var title = UILabel()
     private var calories = UILabel()
-    private  var minutes = UILabel()
+    private var minutes = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 
