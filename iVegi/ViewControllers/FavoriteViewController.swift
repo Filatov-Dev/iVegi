@@ -11,33 +11,76 @@ final class FavoriteViewController: UIViewController {
 
     private var db = DataModel()
 
+//    private var searchResults : [(title: String, image: String)] = []
+
+    private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Vegan recipes"
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "What do we search?"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+
+
+
+//        searchController.searchResultsUpdater = self
+//        self.definesPresentationContext = true
+//
+//        // Place the search bar in the navigation item's title view.
+//        self.navigationItem.titleView = searchController.searchBar
+//
+//        // Don't hide the navigation bar because the search bar is in it.
+//        searchController.hidesNavigationBarDuringPresentation = false
+
+
+
+
 
       // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+//        navigationController?.navigationBar.isTranslucent = false
+
+//        navigationController?.navigationBar.backgroundColor = view.backgroundColor
+
     }
+
+//    override func loadView() {
+//
+//        let favoriteView = FavoriteView()
+//
+//        favoriteView.searchField.placeholder = "What do we search?"
+//
+//        favoriteView.tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
+//
+//        favoriteView.tableView.dataSource = self
+//        favoriteView.tableView.delegate = self
+//
+//        view = favoriteView
+//    }
 
     override func loadView() {
 
-        let favoriteView = FavoriteView()
+        let tableView = UITableView()
 
-        favoriteView.searchField.placeholder = "What do we search?"
-        
-        favoriteView.tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
+        tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
 
-        favoriteView.tableView.dataSource = self
-        //        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
 
-        view = favoriteView
+        view = tableView
     }
 }
 
 // MARK: - Table view data source
+
 extension FavoriteViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,4 +135,34 @@ extension FavoriteViewController: UITableViewDataSource {
     }
     */
 
+}
+
+// MARK: - Table view delegate
+
+extension FavoriteViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let recipe = db.getRecipe(at: indexPath.row)
+        let recipeDetailedViewController = RecipeDetailedViewController(recipe: recipe)
+//        showDetailViewController(recipeDetailedViewController, sender: self)
+        navigationController?.pushViewController(recipeDetailedViewController, animated: true)
+    }
+}
+
+// MARK: - UISearchResultsUpdating method
+
+extension FavoriteViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        // If the search bar contains text, filter our data with the string
+        if let searchText = searchController.searchBar.text {
+//            filterContent(for: searchText)
+            // Reload the table view with the search result data.
+//            tableView.reloadData()
+        }
+    }
 }

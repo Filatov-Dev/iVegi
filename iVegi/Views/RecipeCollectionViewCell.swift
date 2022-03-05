@@ -25,12 +25,12 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
 
 
 
-        image.backgroundColor = .green
-        title.backgroundColor = .red
-        minutes.backgroundColor = .orange
-        calories.backgroundColor = .yellow
-        minutes.superview?.backgroundColor = .purple
-        self.backgroundColor = .gray
+//        image.backgroundColor = .green
+//        title.backgroundColor = .red
+//        minutes.backgroundColor = .orange
+//        calories.backgroundColor = .yellow
+//        minutes.superview?.backgroundColor = .purple
+//        self.backgroundColor = .gray
 
 
 

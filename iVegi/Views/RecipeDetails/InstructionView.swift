@@ -17,7 +17,7 @@ class InstructionView: UIStackView {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0 // Если 1, то возникает проблема ambiguous width
-        label.setContentHuggingPriority(.init(1000), for: .horizontal)
+        label.setContentHuggingPriority(.init(999), for: .horizontal)
         return label
     }()
 

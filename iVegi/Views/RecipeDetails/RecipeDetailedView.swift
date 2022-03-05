@@ -17,7 +17,8 @@ class RecipeDetailedView: UIView {
 
     private var image: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .center
+        image.contentMode = .scaleAspectFit
+        image.setContentHuggingPriority(.init(999), for: .vertical)
         //        image.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .vertical)
         return image
     }()
@@ -95,6 +96,7 @@ class RecipeDetailedView: UIView {
 
     func Initialize() {
 
+//        backgroundColor = .white
         let rootScrollView = UIScrollView()
         let rootStack = UIStackView()
 
@@ -172,9 +174,20 @@ class RecipeDetailedView: UIView {
         NSLayoutConstraint.activate([
             rootStack.topAnchor.constraint(equalTo: rootScrollView.topAnchor),
             rootStack.leadingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.leadingAnchor),
-            rootStack.trailingAnchor.constraint(equalTo: rootScrollView.trailingAnchor),
+            rootStack.trailingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.trailingAnchor),
             rootStack.bottomAnchor.constraint(equalTo: rootScrollView.bottomAnchor),
             rootStack.widthAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.widthAnchor)
+        ])
+
+        image.translatesAutoresizingMaskIntoConstraints = false;
+
+        let imageHeightConstraint = image.heightAnchor.constraint(equalTo: image.widthAnchor, multiplier: 0.62)
+        imageHeightConstraint.priority = .init(999)
+
+        NSLayoutConstraint.activate([
+            image.leadingAnchor.constraint(equalTo: headArea.layoutMarginsGuide.leadingAnchor),
+            image.trailingAnchor.constraint(equalTo: headArea.layoutMarginsGuide.trailingAnchor),
+            imageHeightConstraint
         ])
 
 //        caloriesAndMinutesStack.translatesAutoresizingMaskIntoConstraints = false;
@@ -239,7 +252,7 @@ class RecipeDetailedView: UIView {
 
         let area = UIView()
         area.layer.cornerRadius = 10
-        area.layer.shadowColor = #colorLiteral(red: 0.7098039216, green: 0.9960784314, blue: 0.5137254902, alpha: 1)
+        area.layer.shadowColor = UIColor(named: "ShadowColor")?.cgColor
 //        area.layer.shadowColor = UIColor.systemGreen.cgColor
 
         area.layer.shadowRadius = 4.0
@@ -249,7 +262,7 @@ class RecipeDetailedView: UIView {
         area.layer.shouldRasterize = true
         area.layer.rasterizationScale = UIScreen.main.scale
 
-        area.backgroundColor = .white
+        area.backgroundColor = UIColor(named: "BackGroundColor")
 //        area.clipsToBounds = true
 
         let stack = UIStackView()

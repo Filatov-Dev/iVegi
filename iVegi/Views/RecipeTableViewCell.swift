@@ -15,10 +15,33 @@ final class RecipeTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "RecipeCell"
 
-    private var image = UIImageView()
-    private var title = UILabel()
-    private var calories = UILabel()
-    private var minutes = UILabel()
+    private var image: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        return image
+    }()
+
+    private var title: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.setContentCompressionResistancePriority(.init(999), for: .vertical)
+        return label
+    }()
+
+    private var calories: UILabel = {
+        let label = UILabel()
+        label.textColor = .secondaryLabel
+        return label
+    }()
+
+    private var minutes: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.textColor = .secondaryLabel
+      return label
+    }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 
@@ -34,22 +57,6 @@ final class RecipeTableViewCell: UITableViewCell {
     }
 
     func Initialize() {
-
-        title.numberOfLines = 0
-
-        image.contentMode = .scaleAspectFit
-        image.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .vertical)
-
-        calories.textColor = .secondaryLabel
-
-        minutes.textAlignment = .right
-        minutes.textColor = .secondaryLabel
-
-//        title.backgroundColor = .yellow
-//        image.backgroundColor = .green
-//        calories.backgroundColor = .blue
-//        minutes.backgroundColor = .gray
-//        contentView.backgroundColor = .orange
 
         let caloriesAndMinutesStack = UIStackView(arrangedSubviews: [calories, minutes])
 
@@ -78,16 +85,33 @@ final class RecipeTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             rootStack.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor),
-            rootStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            rootStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            rootStack.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            rootStack.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
             rootStack.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor)
         ])
 
         image.translatesAutoresizingMaskIntoConstraints = false;
 
+        let imageHeightConstraint = image.heightAnchor.constraint(equalTo: image.widthAnchor, multiplier: 0.62)
+        imageHeightConstraint.priority = .init(999)
+
         NSLayoutConstraint.activate([
-            image.widthAnchor.constraint(equalTo: contentView.layoutMarginsGuide.widthAnchor, multiplier: 0.3)
+            image.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            image.widthAnchor.constraint(equalTo: contentView.layoutMarginsGuide.widthAnchor, multiplier: 0.3),
+            imageHeightConstraint
         ])
+
+
+
+
+
+
+//        title.backgroundColor = .yellow
+//        image.backgroundColor = .green
+//        calories.backgroundColor = .blue
+//        minutes.backgroundColor = .gray
+//        contentView.backgroundColor = .orange
+//        rootStack.backgroundColor = .red
     }
 
     func setup(with recipe: Recipe) {

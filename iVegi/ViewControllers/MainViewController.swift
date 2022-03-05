@@ -21,29 +21,28 @@ final class MainViewController: UITabBarController {
         recipeViewController.tabBarItem = UITabBarItem(title: "Recipes",
                                                        image: UIImage(systemName: "text.book.closed.fill"),
                                                        tag: 0)
-        recipeViewController.view.backgroundColor = .white
+        recipeViewController.view.backgroundColor = UIColor(named: "BackGroundColor")
 
         let favoriteViewController = FavoriteViewController()
         favoriteViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        favoriteViewController.view.backgroundColor = .white
+        favoriteViewController.view.backgroundColor = UIColor(named: "BackGroundColor")
 
-        let shoppingListViewController = RecipeDetailedViewController()
-        shoppingListViewController.recipe = DataModel().getRecipe(at: 0)
+        let shoppingListViewController = RecipeDetailedViewController(recipe: DataModel().getRecipe(at: 0))
         shoppingListViewController.tabBarItem = UITabBarItem(title: "Shopping list",
                                                              image: UIImage(systemName: "bag.fill"),
                                                              tag: 2)
-        shoppingListViewController.view.backgroundColor = .white
+        shoppingListViewController.view.backgroundColor = UIColor(named: "BackGroundColor")
 
         let moreViewController = UIViewController()
         moreViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
-        moreViewController.view.backgroundColor = .white
+        moreViewController.view.backgroundColor = UIColor(named: "BackGroundColor")
 
-        setViewControllers([recipeViewController,
-                            favoriteViewController,
+        setViewControllers([UINavigationController(rootViewController: recipeViewController),
+                            UINavigationController(rootViewController: favoriteViewController),
                             shoppingListViewController,
                             moreViewController], animated: true)
 
-        selectedIndex = 2
+        selectedIndex = 1
 
 
         return self

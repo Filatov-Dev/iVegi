@@ -9,18 +9,39 @@ import UIKit
 
 final class RecipeDetailedViewController: UIViewController {
 
-    var recipe: Recipe? {
-        didSet {
+    private var recipe: Recipe? //{
+//        didSet {
 //            if oldValue != recipe {
-                updateView()
+//                updateView()
 //            }
-        }
+//        }
+//    }
+
+    init(recipe: Recipe) {
+        self.recipe = recipe
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateView()
+
+        if let recipe = recipe {
+            title = recipe.title
+        }
+
+//        navigationController?.navigationBar.isTranslucent = false
+
+        view.backgroundColor = UIColor(named: "BackGroundColor")
+        navigationController?.view.backgroundColor = view.backgroundColor
+
+
+//        navigationController?.navigationBar.backgroundColor = .green
     }
 
     override func loadView() {
@@ -30,7 +51,7 @@ final class RecipeDetailedViewController: UIViewController {
 //        recipeDetailedView.source.addGestureRecognizer(UIGestureRecognizer)
 
         view = recipeDetailedView
-    }
+     }
 
     func updateView() {
         if let recipe = recipe {

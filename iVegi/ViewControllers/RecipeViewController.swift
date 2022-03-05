@@ -11,15 +11,20 @@ final class RecipeViewController: UIViewController {
 
     private var db = DataModel()
 
-    private var searchField = UITextField()
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+    private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        title = "Vegan recipes"
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "What do we search?"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
         collectionView.dataSource = self
         collectionView.delegate = self
 
@@ -29,31 +34,19 @@ final class RecipeViewController: UIViewController {
     }
 
     override func loadView() {
-        view = UIView()
-  
-        // searchField
-        view.addSubview(searchField)
-        searchField.placeholder = "What do we search?"
-        searchField.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            searchField.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 5),
-            searchField.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            searchField.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
-            searchField.heightAnchor.constraint(equalToConstant: 20)
-        ])
+        view = collectionView
 
         // collectionView
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-
-        // Layout constraints for `collectionView`
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-        ])
+//        view.addSubview(collectionView)
+//        collectionView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        // Layout constraints for `collectionView`
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor),
+//            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+//            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+//            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
+//        ])
     }
 }
 
@@ -155,6 +148,16 @@ extension RecipeViewController: UICollectionViewDelegateFlowLayout {
 
 extension RecipeViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+
+        collectionView.deselectItem(at: indexPath, animated: true)
+
+        let recipe = db.getRecipe(at: indexPath.row)
+        let recipeDetailedViewController = RecipeDetailedViewController(recipe: recipe)
+        //        showDetailViewController(recipeDetailedViewController, sender: self)
+        navigationController?.pushViewController(recipeDetailedViewController, animated: true)
+    }
 /*
  // Uncomment this method to specify if the specified item should be highlighted during tracking
  override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -183,4 +186,18 @@ extension RecipeViewController: UICollectionViewDelegate {
 
  }
  */
+}
+
+// MARK: - UISearchResultsUpdating method
+
+extension RecipeViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        // If the search bar contains text, filter our data with the string
+        if let searchText = searchController.searchBar.text {
+            //            filterContent(for: searchText)
+            // Reload the table view with the search result data.
+            //            tableView.reloadData()
+        }
+    }
 }
