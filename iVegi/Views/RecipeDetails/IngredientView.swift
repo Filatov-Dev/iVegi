@@ -53,15 +53,10 @@ class IngredientView: UIView {
 
         addSubview(title)
 
-
-//        title.setContentHuggingPriority(.defaultLow, for: .horizontal)
-
         [self.amount,
          self.piece].forEach { stack.addArrangedSubview($0) }
 
         addSubview(stack)
-
-
 
         mark.translatesAutoresizingMaskIntoConstraints = false;
 
@@ -90,22 +85,18 @@ class IngredientView: UIView {
             stack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
-
-
-
-
+//DEBUGG
 //        backgroundColor = .cyan
 //        title.backgroundColor = .orange
 //        amount.backgroundColor = .systemPink
 //        piece.backgroundColor = .green
-
     }
 
     func setup(with ingredient: Ingredient) {
         title.text = ingredient.title
-       // let format = ingredient.amount == Float(Int(ingredient.amount))
+//        let format = ingredient.amount == Float(Int(ingredient.amount))
 //        amount.text = String(format: "%.0F", ingredient.amount)
         amount.text = String(format: "%.1F", ingredient.amount)
         piece.text = ingredient.piece.rawValue
-     }
+    }
 }

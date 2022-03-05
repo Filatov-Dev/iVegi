@@ -11,60 +11,20 @@ final class FavoriteViewController: UIViewController {
 
     private var db = DataModel()
 
-//    private var searchResults : [(title: String, image: String)] = []
-
     private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Vegan recipes"
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "What do we search?"
+
+        navigationItem.title = "Vegan recipes"
         navigationItem.searchController = searchController
+
         definesPresentationContext = true
-
-
-
-//        searchController.searchResultsUpdater = self
-//        self.definesPresentationContext = true
-//
-//        // Place the search bar in the navigation item's title view.
-//        self.navigationItem.titleView = searchController.searchBar
-//
-//        // Don't hide the navigation bar because the search bar is in it.
-//        searchController.hidesNavigationBarDuringPresentation = false
-
-
-
-
-
-      // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-//        navigationController?.navigationBar.isTranslucent = false
-
-//        navigationController?.navigationBar.backgroundColor = view.backgroundColor
-
     }
-
-//    override func loadView() {
-//
-//        let favoriteView = FavoriteView()
-//
-//        favoriteView.searchField.placeholder = "What do we search?"
-//
-//        favoriteView.tableView.register(RecipeTableViewCell.self, forCellReuseIdentifier: RecipeTableViewCell.reuseIdentifier)
-//
-//        favoriteView.tableView.dataSource = self
-//        favoriteView.tableView.delegate = self
-//
-//        view = favoriteView
-//    }
 
     override func loadView() {
 

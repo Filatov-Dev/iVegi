@@ -44,67 +44,22 @@ class InstructionView: UIStackView {
 
     func Initialize() {
 
-//        let stack = self
-
-//        let mark = UIImageView(image: UIImage(systemName: "staroflife"))
-//        addSubview(mark)
-
-//        addSubview(title)
-
         self.axis = .horizontal
         self.spacing = K.spacing
         self.alignment = .top
         self.distribution = .fill
 
-        //        title.setContentHuggingPriority(.defaultLow, for: .horizontal)
-
         [self.number,
          self.instruction].forEach { self.addArrangedSubview($0) }
 
-//        addSubview(stack)
-
-//        mark.translatesAutoresizingMaskIntoConstraints = false;
-//
-//        NSLayoutConstraint.activate([
-//            mark.topAnchor.constraint(equalTo: topAnchor),
-//            mark.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            mark.widthAnchor.constraint(equalTo: mark.heightAnchor),
-//            mark.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
-//
-//        title.translatesAutoresizingMaskIntoConstraints = false;
-//
-//        NSLayoutConstraint.activate([
-//            title.topAnchor.constraint(equalTo: topAnchor),
-//            title.leadingAnchor.constraint(equalTo: mark.trailingAnchor),
-//            title.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
-//
-//        stack.translatesAutoresizingMaskIntoConstraints = false;
-//
-//        NSLayoutConstraint.activate([
-//            stack.topAnchor.constraint(equalTo: topAnchor),
-//            stack.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            stack.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            stack.bottomAnchor.constraint(equalTo: bottomAnchor)
-//        ])
-
-
-
-
-
+//DEBUGG
 //        backgroundColor = .cyan
 //        number.backgroundColor = .orange
 //        instruction.backgroundColor = .systemPink
-
-
     }
 
     func setup(with instruction: String, number: Int) {
         self.number.text = "\(number)."
         self.instruction.text = instruction
-
-//        setNeedsLayout()
-
      }
 }

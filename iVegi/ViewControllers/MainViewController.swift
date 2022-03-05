@@ -11,7 +11,6 @@ final class MainViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     func Initialize() -> UIViewController {
@@ -41,9 +40,6 @@ final class MainViewController: UITabBarController {
                             UINavigationController(rootViewController: favoriteViewController),
                             shoppingListViewController,
                             moreViewController], animated: true)
-
-        selectedIndex = 1
-
 
         return self
     }

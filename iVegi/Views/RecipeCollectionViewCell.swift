@@ -20,20 +20,14 @@ final class RecipeCollectionViewCell: UICollectionViewCell {
         image.image = recipe.image
         title.text = recipe.title
         minutes.text = "\(recipe.lengthInMinutes) min"
-//        calories.text = recipe.calories > 0 ? "\(recipe.calories) cal" : ""
         calories.text = "\(recipe.calories) cal"
 
-
-
+//DEBUGG
 //        image.backgroundColor = .green
 //        title.backgroundColor = .red
 //        minutes.backgroundColor = .orange
 //        calories.backgroundColor = .yellow
 //        minutes.superview?.backgroundColor = .purple
 //        self.backgroundColor = .gray
-
-
-
-
     }
 }

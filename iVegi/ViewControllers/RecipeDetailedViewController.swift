@@ -9,13 +9,7 @@ import UIKit
 
 final class RecipeDetailedViewController: UIViewController {
 
-    private var recipe: Recipe? //{
-//        didSet {
-//            if oldValue != recipe {
-//                updateView()
-//            }
-//        }
-//    }
+    private var recipe: Recipe?
 
     init(recipe: Recipe) {
         self.recipe = recipe
@@ -32,25 +26,16 @@ final class RecipeDetailedViewController: UIViewController {
         updateView()
 
         if let recipe = recipe {
-            title = recipe.title
+            navigationItem.title = recipe.title
         }
-
-//        navigationController?.navigationBar.isTranslucent = false
 
         view.backgroundColor = UIColor(named: "BackGroundColor")
         navigationController?.view.backgroundColor = view.backgroundColor
-
-
-//        navigationController?.navigationBar.backgroundColor = .green
     }
 
     override func loadView() {
 
-        let recipeDetailedView = RecipeDetailedView()
-//        let gestureRecognizer = UIGestureRecognizer(target: <#T##Any?#>, action: <#T##Selector?#>)
-//        recipeDetailedView.source.addGestureRecognizer(UIGestureRecognizer)
-
-        view = recipeDetailedView
+        view = RecipeDetailedView()
      }
 
     func updateView() {

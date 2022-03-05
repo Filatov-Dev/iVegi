@@ -101,11 +101,7 @@ final class RecipeTableViewCell: UITableViewCell {
             imageHeightConstraint
         ])
 
-
-
-
-
-
+//DEBUGG
 //        title.backgroundColor = .yellow
 //        image.backgroundColor = .green
 //        calories.backgroundColor = .blue

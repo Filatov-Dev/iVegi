@@ -7,8 +7,7 @@
 
 import UIKit
 
-//TODO Make final inherite from UIScrollView???
-class RecipeDetailedView: UIView {
+final class RecipeDetailedView: UIView {
 
     private enum K {
         static let spacing: CGFloat = 10.0
@@ -19,7 +18,6 @@ class RecipeDetailedView: UIView {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.setContentHuggingPriority(.init(999), for: .vertical)
-        //        image.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .vertical)
         return image
     }()
 
@@ -28,12 +26,6 @@ class RecipeDetailedView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = .preferredFont(forTextStyle: .title1)
-
-        //        title.layer.shadowColor = UIColor.black.cgColor
-        //        title.layer.shadowRadius = 3.0
-        //        title.layer.shadowOpacity = 1.0
-        //        title.layer.shadowOffset = CGSize(width: 4, height: 4)
-        //        title.layer.masksToBounds = false
         return label
     }()
     
@@ -69,7 +61,6 @@ class RecipeDetailedView: UIView {
     private var source: UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
-//        textView.font = .preferredFont(forTextStyle: .headline)
         return textView
     }()
 
@@ -96,7 +87,6 @@ class RecipeDetailedView: UIView {
 
     func Initialize() {
 
-//        backgroundColor = .white
         let rootScrollView = UIScrollView()
         let rootStack = UIStackView()
 
@@ -105,10 +95,6 @@ class RecipeDetailedView: UIView {
         rootStack.alignment = .fill
         rootStack.distribution = .fill
 
-
-//        rootStack.addArrangedSubview(image)
-//        rootStack.addArrangedSubview(title)
-
         let caloriesAndMinutesStack = UIStackView(arrangedSubviews: [calories, minutes])
 
         caloriesAndMinutesStack.axis = .horizontal
@@ -116,22 +102,18 @@ class RecipeDetailedView: UIView {
         caloriesAndMinutesStack.alignment = .fill
         caloriesAndMinutesStack.distribution = .fillEqually
 
-//        rootStack.addArrangedSubview(caloriesAndMinutesStack)
         let headArea = createAreaView(for: [image, title, caloriesAndMinutesStack])
         rootStack.addArrangedSubview(headArea)
 
         let ingredientsTitle = UILabel()
         ingredientsTitle.text = "Ingredients"
         ingredientsTitle.font = .preferredFont(forTextStyle: .title2)
-//        rootStack.addArrangedSubview(ingredientsTitle)
 
-//        rootStack.addArrangedSubview(ingredients)
         let ingredientsArea = createAreaView(for: [ingredientsTitle, ingredients])
         rootStack.addArrangedSubview(ingredientsArea)
 
         let descriptionArea = createAreaView(for: [recipeDescription])
         rootStack.addArrangedSubview(descriptionArea)
-//        rootStack.addArrangedSubview(recipeDescription)
 
         let instructionTitle = UILabel()
         instructionTitle.text = "Instructions"
@@ -139,22 +121,9 @@ class RecipeDetailedView: UIView {
 
         let instructionsArea = createAreaView(for: [instructionTitle, instructions])
         rootStack.addArrangedSubview(instructionsArea)
-//        rootStack.addArrangedSubview(instructions)
-
-//        let sourceTextLabel = UILabel()
-//        sourceTextLabel.text = "Source:"
-//        sourceTextLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-
-//        let sourceStack = UIStackView(arrangedSubviews: [source])
-//
-//        sourceStack.axis = .horizontal
-//        sourceStack.spacing = K.spacing
-//        sourceStack.alignment = .fill
-//        sourceStack.distribution = .fill
 
         let sourceArea = createAreaView(for: [source])
         rootStack.addArrangedSubview(sourceArea)
-//        rootStack.addArrangedSubview(source)
 
         rootScrollView.addSubview(rootStack)
 
@@ -190,29 +159,7 @@ class RecipeDetailedView: UIView {
             imageHeightConstraint
         ])
 
-//        caloriesAndMinutesStack.translatesAutoresizingMaskIntoConstraints = false;
-
-//        NSLayoutConstraint.activate([
-//            caloriesAndMinutesStack.leadingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.leadingAnchor),
-//            caloriesAndMinutesStack.trailingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.trailingAnchor)
-//        ])
-//
-//        ingredients.translatesAutoresizingMaskIntoConstraints = false;
-//
-//        NSLayoutConstraint.activate([
-//            ingredients.leadingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.leadingAnchor),
-//            ingredients.trailingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.trailingAnchor)
-//        ])
-//
-//        instructions.translatesAutoresizingMaskIntoConstraints = false;
-//
-//        NSLayoutConstraint.activate([
-//            instructions.leadingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.leadingAnchor),
-//            instructions.trailingAnchor.constraint(equalTo: rootScrollView.layoutMarginsGuide.trailingAnchor)
-//        ])
-
-
-
+//DEBUGG
 //        title.backgroundColor = .yellow
 //        image.backgroundColor = .green
 //        calories.backgroundColor = .blue
@@ -222,48 +169,22 @@ class RecipeDetailedView: UIView {
 //        ingredients.backgroundColor = .yellow
 //        instructions.backgroundColor = .yellow
 //        backgroundColor = .orange
-
 //        rootScrollView.backgroundColor = #colorLiteral(red: 0.7098039216, green: 0.9960784314, blue: 0.5137254902, alpha: 1)
-
-
     }
-
-//    func createAreaView(for array: [UIView]) -> UIStackView {
-//        let area = UIStackView()
-//        area.layer.cornerRadius = 10
-//        area.backgroundColor = .white
-//        area.clipsToBounds = true
-//
-//        area.axis = .vertical
-//        area.spacing = K.spacing
-//        area.alignment = .fill
-//        area.distribution = .fill
-//
-//        array.forEach {
-//            area.addArrangedSubview($0)
-//        }
-//
-//        insetsLayoutMarginsFromSafeArea = true
-//
-//        return area
-//    }
 
     func createAreaView(for array: [UIView]) -> UIView {
 
         let area = UIView()
         area.layer.cornerRadius = 10
         area.layer.shadowColor = UIColor(named: "ShadowColor")?.cgColor
-//        area.layer.shadowColor = UIColor.systemGreen.cgColor
 
         area.layer.shadowRadius = 4.0
         area.layer.shadowOpacity = 1.0
         area.layer.shadowOffset = CGSize(width: 4, height: 4)
-//        area.layer.masksToBounds = false
         area.layer.shouldRasterize = true
         area.layer.rasterizationScale = UIScreen.main.scale
 
         area.backgroundColor = UIColor(named: "BackGroundColor")
-//        area.clipsToBounds = true
 
         let stack = UIStackView()
         stack.axis = .vertical
@@ -293,7 +214,6 @@ class RecipeDetailedView: UIView {
         image.image = recipe.image
         title.text = recipe.title
         minutes.text = "\(recipe.lengthInMinutes) min"
-        //        calories.text = recipe.calories > 0 ? "\(recipe.calories) cal" : ""
         calories.text = "\(recipe.calories) cal"
         recipeDescription.text = recipe.description
 
@@ -305,7 +225,6 @@ class RecipeDetailedView: UIView {
         attributedString.addAttribute(.link, value: recipe.source, range: NSRange(location: K.prefixSource.count, length: recipe.source.count))
 
         source.attributedText = attributedString
-
     }
 
     func fillIngredients(with array:[Ingredient]) {

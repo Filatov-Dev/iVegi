@@ -11,42 +11,31 @@ final class RecipeViewController: UIViewController {
 
     private var db = DataModel()
 
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-
     private let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Vegan recipes"
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "What do we search?"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
 
-        collectionView.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: RecipeCollectionViewCell.reuseIdentifier)
-        
-        collectionView.reloadData()
+        navigationItem.title = "Vegan recipes"
+        navigationItem.searchController = searchController
+
+        definesPresentationContext = true
     }
 
     override func loadView() {
-        view = collectionView
 
-        // collectionView
-//        view.addSubview(collectionView)
-//        collectionView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        // Layout constraints for `collectionView`
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: searchField.bottomAnchor),
-//            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-//            collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-//            collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor)
-//        ])
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
+        collectionView.register(UINib(nibName: "RecipeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: RecipeCollectionViewCell.reuseIdentifier)
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
+        view = collectionView
     }
 }
 
@@ -82,38 +71,6 @@ extension RecipeViewController: UICollectionViewDelegateFlowLayout {
         static let itemsPerRow: CGFloat = 2
     }
 
-//    private enum LayoutConstant {
-//        static let spacing: CGFloat = 16.0
-//        static let itemHeight: CGFloat = 300.0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let side = itemWidth(for: view.frame.width, spacing: LayoutConstant.spacing)
-//
-//        return CGSize(width: side, height: side)
-//    }
-//
-//    func itemWidth(for width: CGFloat, spacing: CGFloat) -> CGFloat {
-//        let itemsInRow: CGFloat = 2
-//
-//        let totalSpacing: CGFloat = 2 * spacing + (itemsInRow - 1) * spacing
-//        let finalWidth = (width - totalSpacing) / itemsInRow
-//
-//        return finalWidth
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: LayoutConstant.spacing, left: LayoutConstant.spacing, bottom: LayoutConstant.spacing, right: LayoutConstant.spacing)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return LayoutConstant.spacing
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return LayoutConstant.spacing
-//    }
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
